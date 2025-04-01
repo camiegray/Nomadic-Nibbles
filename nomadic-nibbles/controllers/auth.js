@@ -71,6 +71,3 @@ export const signOutUser = (req, res) => {
   });
 };
 
-export const enterVIP = (req, res) => {
-  res.render("auth/vip-lounge");
-};

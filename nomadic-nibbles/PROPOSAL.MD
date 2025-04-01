@@ -1,21 +1,20 @@
 # 🌍 Nomadic Nibbles
 
-![Nomadic Nibbles Logo](./public/images/logo.png)  
-*Screenshot or logo of Nomadic Nibbles will be added here upon completion.*
+![Nomadic Nibbles Landing](assets/Images/shot.png)
 
 ---
 
 ## 📖 Table of Contents
 
-1. [Project Overview]
-2. [MVP](#mvp)  
-3. [User Stories](#user-stories)  
-4. [Technologies Used](#technologies-used)  
-5. [Stretch Goals](#stretch-goals)  
-6. [ERD](#erd)
-7. [Routes and Controllers](#routes-and-controllers)  
-8. [Timeline](#timeline)  
-9. [Acknowledgments](#acknowledgments)
+1. Project Overview
+2. MVP
+3. User Stories  
+4. Technologies Used
+5. Stretch Goals
+6. ERD
+7. Routes and Controllers
+8. Timeline
+
 
 ---
 
@@ -58,11 +57,12 @@ These user stories guide the MVP development, ensuring Nomadic Nibbles meets the
 
 - **As a food enthusiast,** I want to register and log in securely so that I can manage my recipe contributions with confidence.  
 - **As a registered user,** I want to create a recipe complete with ingredients and cultural context so that I can share my culinary discoveries.  
+- ** As a food enthusiast, I want to be able to register and sign in to the database so that I can add and edit my own recipes.
 - **As a registered user,** I want to edit my recipes easily so that I can refine them based on new ideas or feedback.  
 - **As a registered user,** I want to delete my recipes so that I can maintain a curated collection.  
 - **As a visitor,** I want to browse a list of recipes from around the world so that I can find inspiration for my next meal.  
 - **As a visitor,** I want to view detailed recipe pages with complete instructions and ingredient lists so that I can recreate dishes at home.
-
+- ** As a user,** I want to be able to see the origins of the recipe and the user who posted them to see how culinary arts bridges cultures.
 ---
 
 ## 🛠️ Technologies Used
@@ -85,10 +85,10 @@ Nomadic Nibbles leverages a modern MEN stack along with additional tools for a r
 After meeting the MVP requirements, the following enhancements will further elevate Nomadic Nibbles:
 
 1. **Advanced Search & Filtering**: Search by ingredients, cuisine, or dietary preferences.  
-2. **Image Uploads**: Integrate file upload capabilities (e.g., multer) for recipe images.  
+2. **Image Uploads**: Integrate file upload capabilities for recipe images.  
 3. **User Profiles**: Dedicated pages showcasing a user’s recipes, bio, and favorite cuisines.  
 4. **Rating System**: Implement a 5-star rating mechanism with average ratings displayed for each recipe.  
-5. **Cultural Collections**: Curate themed collections (e.g., "Tastes of Southeast Asia") with storytelling elements.  
+5. **Cultural Collections**: Curate themed collections with storytelling elements.  
 6. **RESTful API**: Provide endpoints for mobile app integration or third-party services.
 
 ---
@@ -96,7 +96,7 @@ After meeting the MVP requirements, the following enhancements will further elev
 
 Below is the ERD for **Nomadic Nibbles** outlining the relationships between Users, Recipes, and Regions.
 
-![Nomadic Nibbles ERD](assets/erd2.png)
+![Nomadic Nibbles ERD](assets/Images/erd2.png)
 
 ---
 
@@ -171,8 +171,6 @@ Nomadic Nibbles adheres to RESTful routing conventions. Below are the primary ro
 | Sunday    |   | Final review and deploy        |                        |                                          |
 | Monday    |   | Present!                       |                        |                                          |
 
-## ✨ Acknowledgments
 
-Special thanks to my instructors and peers for their guidance and support throughout the development of Nomadic Nibbles. This project is more than just an application—it’s a culinary adventure that blends global flavors with modern web development practices. 
 
 **Savor the flavors of the world with Nomadic Nibbles!**

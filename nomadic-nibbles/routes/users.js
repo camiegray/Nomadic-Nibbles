@@ -9,6 +9,5 @@ router.get("/sign-in", controllers.getSignIn);
 router.post("/sign-up", controllers.registerUser);
 router.post("/sign-in", controllers.loginUser);
 router.get("/sign-out", controllers.signOutUser);
-router.get("/vip", isSignedIn, controllers.enterVIP);
 
 export default router;
