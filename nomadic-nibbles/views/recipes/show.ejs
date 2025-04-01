@@ -4,6 +4,14 @@
   <meta charset="UTF-8">
   <title><%= recipe.title %></title>
   <link rel="stylesheet" href="/css/style.css">
+  <style>
+    body {
+      background-image: url('/assets/images/show.png');
+      background-attachment: fixed;
+      background-size: cover;
+      background-position: center;
+    }
+  </style>
 </head>
 <body>
   <%- include('../partials/nav') %>
@@ -16,7 +24,7 @@
       <% }) %>
     </ul>
     <p><strong>Instructions:</strong> <%= recipe.instructions %></p>
-    <p><strong>Region:</strong> <%= recipe.region.name %></p>
+    <p><strong>Region:</strong> <%= recipe.region.major %> - <%= recipe.region.sub %></p>
     <p><strong>Created by:</strong> <%= recipe.author.username %></p>
     <% if (user && user._id.toString() === recipe.author._id.toString()) { %>
       <a href="/recipes/<%= recipe._id %>/edit" class="btn">Edit Recipe</a>

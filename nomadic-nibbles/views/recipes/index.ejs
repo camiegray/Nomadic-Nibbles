@@ -4,19 +4,31 @@
   <meta charset="UTF-8">
   <title>All Recipes</title>
   <link rel="stylesheet" href="/css/style.css">
+  <style>
+    body {
+      background-image: url('/assets/images/index.png');
+      background-attachment: fixed;
+      background-size: cover;
+      background-position: center;
+    }
+  </style>
 </head>
 <body>
   <%- include('../partials/nav') %>
   <main>
     <h1>All Recipes</h1>
-    <ul>
-      <% recipes.forEach(recipe => { %>
-        <li>
-          <a href="/recipes/<%= recipe._id %>"><%= recipe.title %></a>
-          by <%= recipe.author.username %> (<%= recipe.region.name %>)
-        </li>
-      <% }) %>
-    </ul>
+    <% if (recipes.length === 0) { %>
+      <p>No recipes found. <% if(user) { %> <a href="/recipes/new">Create one?</a> <% } %></p>
+    <% } else { %>
+      <ul>
+        <% recipes.forEach(recipe => { %>
+          <li>
+            <a href="/recipes/<%= recipe._id %>"><%= recipe.title %></a> by <%= recipe.author.username %> 
+            (Region: <%= recipe.region.major %> - <%= recipe.region.sub %>)
+          </li>
+        <% }) %>
+      </ul>
+    <% } %>
     <% if (user) { %>
       <a href="/recipes/new" class="btn">Create New Recipe</a>
     <% } %>

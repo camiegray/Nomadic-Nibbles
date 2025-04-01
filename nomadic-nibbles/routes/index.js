@@ -5,7 +5,7 @@ import recipesRouter from "./recipes.js";
 const router = Router();
 
 router.get("/", (req, res) => {
-  res.render("index");
+  res.render("home");
 });
 
 router.use("/auth", userRoutes);

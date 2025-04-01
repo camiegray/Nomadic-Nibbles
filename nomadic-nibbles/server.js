@@ -26,6 +26,8 @@ app.use(
 );
 app.use(passUserToView);
 app.use(express.static("public"));
+app.use("/assets", express.static("assets"));
+
 app.use("/", router);
 
 db.on("connected", () => {

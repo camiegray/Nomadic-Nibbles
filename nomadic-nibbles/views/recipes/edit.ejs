@@ -4,6 +4,14 @@
   <meta charset="UTF-8">
   <title>Edit Recipe</title>
   <link rel="stylesheet" href="/css/style.css">
+  <style>
+    body {
+      background-image: url('/assets/images/edit.png');
+      background-attachment: fixed;
+      background-size: cover;
+      background-position: center;
+    }
+  </style>
 </head>
 <body>
   <%- include('../partials/nav') %>
@@ -48,10 +56,9 @@
     document.addEventListener('DOMContentLoaded', function() {
       const majorRegionSelect = document.getElementById('majorRegion');
       const subRegionSelect = document.getElementById('subRegion');
-      const event = new Event('change');
-      majorRegionSelect.dispatchEvent(event);
-      setTimeout(function(){
-         subRegionSelect.value = "<%= recipe.region.sub %>";
+      majorRegionSelect.dispatchEvent(new Event('change'));
+      setTimeout(() => {
+        subRegionSelect.value = "<%= recipe.region.sub %>";
       }, 100);
     });
   </script>

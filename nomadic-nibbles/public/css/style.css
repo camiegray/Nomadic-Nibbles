@@ -50,15 +50,15 @@
   }
   
   /* Hero Section */
-  .hero {
+        .hero {
     height: 100vh;
-    background: url('/assets/Images/shot.png') no-repeat center center/cover;
+   
     display: flex;
     align-items: center;
     justify-content: center;
     margin-top: 60px;
   }
-  
+   
   .hero-overlay {
     background: rgba(0, 0, 0, 0.4);
     padding: 20px;
