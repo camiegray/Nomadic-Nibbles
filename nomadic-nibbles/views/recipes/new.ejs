@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Create New Recipe</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <%- include('../partials/nav') %>
+  <main>
+    <h1>Create New Recipe</h1>
+    <form action="/recipes" method="POST">
+      <div>
+        <label for="title">Title:</label>
+        <input type="text" name="title" id="title" required>
+      </div>
+      <div>
+        <label for="ingredients">Ingredients (comma separated):</label>
+        <input type="text" name="ingredients" id="ingredients" required>
+      </div>
+      <div>
+        <label for="instructions">Instructions:</label>
+        <textarea name="instructions" id="instructions" required></textarea>
+      </div>
+      <div>
+        <label for="regionName">Region:</label>
+        <input type="text" name="regionName" id="regionName" required>
+      </div>
+      <button type="submit">Create Recipe</button>
+    </form>
+    <a href="/recipes" class="btn">Cancel</a>
+  </main>
+</body>
+</html>

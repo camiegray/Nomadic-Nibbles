@@ -1,3 +1,4 @@
+// server.js
 import "dotenv/config";
 import express from "express";
 import db from "./db/connection.js";
@@ -10,31 +11,25 @@ import router from "./routes/index.js";
 import passUserToView from "./middleware/pass-user-to-view.js";
 
 const app = express();
+const PORT = process.env.PORT || "3000";
 
-const PORT = process.env.PORT ? process.env.PORT : "3000";
+app.use(express.urlencoded({ extended: false }
+));
+app.use(express.static("public"));
 
-// Middleware to parse URL-encoded data from forms
-app.use(express.urlencoded({ extended: false }));
-// Middleware for using HTTP verbs such as PUT or DELETE
 app.use(methodOverride("_method"));
-// Morgan for logging HTTP requests
 app.use(logger("dev"));
-// Set View Engine to ejs templating
 app.set("view engine", "ejs");
-// Configure session based Auth
 app.use(
   session({
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: true,
-    store: MongoStore.create({
-      mongoUrl: process.env.MONGODB_URI,
-    }),
+    store: MongoStore.create({ mongoUrl: process.env.MONGODB_URI }),
   })
 );
-// Pass user to locals object middleware
 app.use(passUserToView);
-
+app.use(express.static("public"));
 app.use("/", router);
 
 db.on("connected", () => {

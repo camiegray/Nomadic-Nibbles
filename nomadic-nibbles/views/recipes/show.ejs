@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title><%= recipe.title %></title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <%- include('../partials/nav') %>
+  <main>
+    <h1><%= recipe.title %></h1>
+    <p><strong>Ingredients:</strong></p>
+    <ul>
+      <% recipe.ingredients.forEach(ingredient => { %>
+        <li><%= ingredient %></li>
+      <% }) %>
+    </ul>
+    <p><strong>Instructions:</strong> <%= recipe.instructions %></p>
+    <p><strong>Region:</strong> <%= recipe.region.name %></p>
+    <p><strong>Created by:</strong> <%= recipe.author.username %></p>
+    <% if (user && user._id.toString() === recipe.author._id.toString()) { %>
+      <a href="/recipes/<%= recipe._id %>/edit" class="btn">Edit Recipe</a>
+      <form action="/recipes/<%= recipe._id %>?_method=DELETE" method="POST" style="display:inline;">
+        <button type="submit" class="btn">Delete Recipe</button>
+      </form>
+    <% } %>
+    <a href="/recipes" class="btn">Back to Recipes</a>
+  </main>
+</body>
+</html>

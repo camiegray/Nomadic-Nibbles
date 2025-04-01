@@ -1,0 +1,16 @@
+<header class="navbar">
+    <div class="container">
+      <a href="/" class="logo">Nomadic Nibbles</a>
+      <nav class="nav-links">
+        <a href="/">Home</a>
+        <a href="/recipes">Recipes</a>
+        <% if (!user) { %>
+          <a href="/auth/sign-in" class="btn login">Login</a>
+          <a href="/auth/sign-up" class="btn signup">Sign Up</a>
+        <% } else { %>
+          <a href="/auth/sign-out" class="btn logout">Sign Out</a>
+        <% } %>
+      </nav>
+    </div>
+  </header>
+  
