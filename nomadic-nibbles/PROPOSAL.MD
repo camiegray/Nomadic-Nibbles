@@ -7,7 +7,7 @@
 
 ## 📖 Table of Contents
 
-1. [Project Overview](#project-overview)  
+1. [Project Overview]
 2. [MVP](#mvp)  
 3. [User Stories](#user-stories)  
 4. [Technologies Used](#technologies-used)  
@@ -94,9 +94,9 @@ After meeting the MVP requirements, the following enhancements will further elev
 ---
 ## 📊 Entity Relationship Diagram (ERD)
 
-Below is the ERD for **Nomadic Nibbles** which outlines the relationships between Users, Recipes, and Regions.
+Below is the ERD for **Nomadic Nibbles** outlining the relationships between Users, Recipes, and Regions.
 
-![Nomadic Nibbles ERD](https://mermaid.ink/img/eyJjb2RlIjoiZXJEaWFncmFtXG4gICAgVVNFUlNcbiAgICB7IGludCB1c2VySUQgUEsgfVxuICAgIHsgc3RyaW5nIGVtYWlsIH0gXG4gICAgeyBzdHJpbmcgcGFzc3dvcmQgfSBcbiAgICB7IHN0cmluZyB1c2VybmFtZSB9XG4gICAgeyBpbnQgcmVnaW9uSUQgRksgfVxuICAgIH0gXG4gICAgUkVDSVBFU0VzXG4gICAgeyBpbnQgcmVjaXBlSUREIFBLIH0gXG4gICAgeyBzdHJpbmcgdGl0bGUgfSBcbiAgICB7IHN0cmluZyBpbnN0cnVjdGlvbnMgfSBcbiAgICB7IGludCB1c2VySUQgRksgfVxuICAgIHsgaW50IHJlZ2lvbklEIFBLIH0gXG4gICAgUkVDSVBFU0VzXG4gICAgeyBpbnQgcmVnaW9uSUQgRksgfVxuICAgIHsgc3RyaW5nIG5hbWUgfSBcbiAgICB7IHN0cmluZyBjb250aW5lbnQgfVxuICAgIH0iLCJtZXJtYWlkIjp7fX0)
+![Nomadic Nibbles ERD](assets/erd2.png)
 
 ---
 
@@ -157,9 +157,20 @@ Nomadic Nibbles adheres to RESTful routing conventions. Below are the primary ro
   **Controller**: `recipes.deleteRecipe()`
 
 ---
+
 ## Timeline
 
----
+| Day       |   | Task                           | Blockers               | Notes/ Thoughts                          |
+|-----------|---|--------------------------------|------------------------|------------------------------------------|
+| Monday    |   | Research                       |                        |                                          |
+| Tuesday   |   | Proposal & Routes              |                        | Finalize project proposal                |
+| Wednesday |   | Views                          | Initial design issues  | HTML & EJS views for core pages.         |
+| Thursday  |   | Views & Routes                 | Minor debugging        | Express routes                           |
+| Friday    |   | Testing                        |                        | Combine functionalities                  |
+| Saturday  |   | CSS & Styling                  |                        | Flexbox                                  |
+| Sunday    |   | Final review and deploy        |                        |                                          |
+| Monday    |   | Present!                       |                        |                                          |
+
 ## ✨ Acknowledgments
 
 Special thanks to my instructors and peers for their guidance and support throughout the development of Nomadic Nibbles. This project is more than just an application—it’s a culinary adventure that blends global flavors with modern web development practices. 
