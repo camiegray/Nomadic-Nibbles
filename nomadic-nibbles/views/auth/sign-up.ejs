@@ -23,12 +23,26 @@
         <input type="password" name="confirmPassword" id="confirmPassword" required>
       </div>
       <div>
-        <label for="regionName">Region:</label>
-        <input type="text" name="regionName" id="regionName" required>
+        <label for="majorRegion">Major Region:</label>
+        <select id="majorRegion" name="majorRegion" required>
+          <option value="">Select a major region</option>
+          <option value="Asia">Asia</option>
+          <option value="Europe">Europe</option>
+          <option value="Africa">Africa</option>
+          <option value="Americas">Americas</option>
+          <option value="Oceania">Oceania</option>
+        </select>
+      </div>
+      <div>
+        <label for="subRegion">Subregion:</label>
+        <select id="subRegion" name="subRegion" required>
+          <option value="">Select a subregion</option>
+        </select>
       </div>
       <button type="submit">Sign Up</button>
     </form>
     <p>Already have an account? <a href="/auth/sign-in">Sign In</a></p>
   </main>
+  <script src="/js/region-dropdown.js"></script>
 </body>
 </html>

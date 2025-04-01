@@ -23,12 +23,37 @@
         <textarea name="instructions" id="instructions" required><%= recipe.instructions %></textarea>
       </div>
       <div>
-        <label for="regionName">Region:</label>
-        <input type="text" name="regionName" id="regionName" value="<%= recipe.region.name %>" required>
+        <label for="majorRegion">Major Region:</label>
+        <select id="majorRegion" name="majorRegion" required>
+          <option value="">Select a major region</option>
+          <option value="Asia" <%= recipe.region.major === "Asia" ? "selected" : "" %>>Asia</option>
+          <option value="Europe" <%= recipe.region.major === "Europe" ? "selected" : "" %>>Europe</option>
+          <option value="Africa" <%= recipe.region.major === "Africa" ? "selected" : "" %>>Africa</option>
+          <option value="Americas" <%= recipe.region.major === "Americas" ? "selected" : "" %>>Americas</option>
+          <option value="Oceania" <%= recipe.region.major === "Oceania" ? "selected" : "" %>>Oceania</option>
+        </select>
+      </div>
+      <div>
+        <label for="subRegion">Subregion:</label>
+        <select id="subRegion" name="subRegion" required>
+          <option value="">Select a subregion</option>
+        </select>
       </div>
       <button type="submit">Update Recipe</button>
     </form>
     <a href="/recipes/<%= recipe._id %>" class="btn">Cancel</a>
   </main>
+  <script src="/js/region-dropdown.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const majorRegionSelect = document.getElementById('majorRegion');
+      const subRegionSelect = document.getElementById('subRegion');
+      const event = new Event('change');
+      majorRegionSelect.dispatchEvent(event);
+      setTimeout(function(){
+         subRegionSelect.value = "<%= recipe.region.sub %>";
+      }, 100);
+    });
+  </script>
 </body>
 </html>

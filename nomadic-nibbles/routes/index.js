@@ -1,4 +1,3 @@
-// routes/index.js
 import { Router } from "express";
 import userRoutes from "./users.js";
 import recipesRouter from "./recipes.js";
