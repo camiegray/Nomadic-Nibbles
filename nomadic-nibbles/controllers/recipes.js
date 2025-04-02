@@ -90,9 +90,9 @@ export const remove = async (req, res) => {
     const recipe = await Recipe.findById(req.params.id);
     if (!recipe) return res.status(404).send("Recipe not found");
     if (!recipe.author.equals(req.session.user._id))
-      return res.status(403).send("Not authorized");
+      return res.status(403).send("Not authorized to delete this recipe");
     await recipe.remove();
-    res.redirect("/recipes");
+    res.redirect("/profile");
   } catch (err) {
     console.error(err);
     res.status(500).send("Server Error");

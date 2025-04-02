@@ -11,56 +11,106 @@
       background-size: cover;
       background-position: center;
     }
+    main {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+    .edit-form {
+      background: rgba(0, 0, 0, 0.6);
+      padding: 40px;
+      border-radius: 8px;
+      width: 100%;
+      max-width: 600px;
+      display: grid;
+      grid-gap: 15px;
+      color: #fff;
+    }
+    .edit-form h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .edit-form label {
+      font-weight: bold;
+    }
+    .edit-form input,
+    .edit-form textarea,
+    .edit-form select {
+      padding: 10px;
+      border: none;
+      border-radius: 4px;
+      width: 100%;
+    }
+    .edit-form .row {
+      display: flex;
+      gap: 10px;
+    }
+    .edit-form .row > div {
+      flex: 1;
+    }
+    .edit-form button {
+      padding: 12px;
+      border: none;
+      border-radius: 4px;
+      background: #F4A261;
+      color: #fff;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    .edit-form button:hover {
+      background: #e98b44;
+    }
   </style>
 </head>
 <body>
   <%- include('../partials/nav') %>
   <main>
-    <h1>Edit Recipe</h1>
-    <form action="/recipes/<%= recipe._id %>?_method=PUT" method="POST">
-      <div>
-        <label for="title">Title:</label>
-        <input type="text" name="title" id="title" value="<%= recipe.title %>" required>
+    <form action="/recipes/<%= recipe._id %>?_method=PUT" method="POST" class="edit-form">
+      <h1>Edit Recipe</h1>
+      <label for="title">Title</label>
+      <input type="text" name="title" id="title" value="<%= recipe.title %>" required>
+      <label for="description">Description</label>
+      <textarea name="description" id="description" rows="3" required><%= recipe.description %></textarea>
+      <div class="row">
+        <div>
+          <label for="prepTime">Prep Time</label>
+          <input type="text" name="prepTime" id="prepTime" value="<%= recipe.prepTime %>" required>
+        </div>
+        <div>
+          <label for="cookTime">Cook Time</label>
+          <input type="text" name="cookTime" id="cookTime" value="<%= recipe.cookTime %>" required>
+        </div>
       </div>
-      <div>
-        <label for="ingredients">Ingredients (comma separated):</label>
-        <input type="text" name="ingredients" id="ingredients" value="<%= recipe.ingredients.join(', ') %>" required>
-      </div>
-      <div>
-        <label for="instructions">Instructions:</label>
-        <textarea name="instructions" id="instructions" required><%= recipe.instructions %></textarea>
-      </div>
-      <div>
-        <label for="majorRegion">Major Region:</label>
-        <select id="majorRegion" name="majorRegion" required>
-          <option value="">Select a major region</option>
-          <option value="Asia" <%= recipe.region.major === "Asia" ? "selected" : "" %>>Asia</option>
-          <option value="Europe" <%= recipe.region.major === "Europe" ? "selected" : "" %>>Europe</option>
-          <option value="Africa" <%= recipe.region.major === "Africa" ? "selected" : "" %>>Africa</option>
-          <option value="Americas" <%= recipe.region.major === "Americas" ? "selected" : "" %>>Americas</option>
-          <option value="Oceania" <%= recipe.region.major === "Oceania" ? "selected" : "" %>>Oceania</option>
-        </select>
-      </div>
-      <div>
-        <label for="subRegion">Subregion:</label>
-        <select id="subRegion" name="subRegion" required>
-          <option value="">Select a subregion</option>
-        </select>
-      </div>
+      <label for="totalTime">Total Time</label>
+      <input type="text" name="totalTime" id="totalTime" value="<%= recipe.totalTime %>" required>
+      <label for="servings">Servings</label>
+      <input type="text" name="servings" id="servings" value="<%= recipe.servings %>" required>
+      <label for="ingredients">Ingredients (comma separated)</label>
+      <textarea name="ingredients" id="ingredients" rows="3" required><%= recipe.ingredients.join(", ") %></textarea>
+      <label for="instructions">Instructions (separate steps with newlines)</label>
+      <textarea name="instructions" id="instructions" rows="6" required><%= recipe.instructions.join("\n") %></textarea>
+      <label for="majorRegion">Main Region</label>
+      <select name="majorRegion" id="majorRegion" required>
+        <option value="">--Select--</option>
+        <option value="Asia" <%= recipe.region.major === "Asia" ? "selected" : "" %>>Asia</option>
+        <option value="Europe" <%= recipe.region.major === "Europe" ? "selected" : "" %>>Europe</option>
+        <option value="Africa" <%= recipe.region.major === "Africa" ? "selected" : "" %>>Africa</option>
+        <option value="Americas" <%= recipe.region.major === "Americas" ? "selected" : "" %>>Americas</option>
+        <option value="Oceania" <%= recipe.region.major === "Oceania" ? "selected" : "" %>>Oceania</option>
+      </select>
+      <label for="subRegion">Subregion</label>
+      <select name="subRegion" id="subRegion">
+        <option value="">--Select--</option>
+      </select>
       <button type="submit">Update Recipe</button>
     </form>
-    <a href="/recipes/<%= recipe._id %>" class="btn">Cancel</a>
   </main>
   <script src="/js/region-dropdown.js"></script>
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const majorRegionSelect = document.getElementById('majorRegion');
-      const subRegionSelect = document.getElementById('subRegion');
-      majorRegionSelect.dispatchEvent(new Event('change'));
-      setTimeout(() => {
-        subRegionSelect.value = "<%= recipe.region.sub %>";
-      }, 100);
-    });
+    populateSubregions(majorRegionSelect.value, "<%= recipe.region.sub %>");
   </script>
 </body>
 </html>
