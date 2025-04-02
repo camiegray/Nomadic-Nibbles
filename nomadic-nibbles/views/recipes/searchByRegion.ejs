@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Recipes by Region</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <%- include('../partials/nav') %>
+  <main>
+    <h1>Recipes by Region</h1>
+    <% if (major) { %>
+      <p>Showing recipes from <strong><%= major %></strong>
+        <% if (sub && sub.trim() !== "") { %> - <strong><%= sub %></strong><% } %>.
+      </p>
+    <% } else { %>
+      <p>No region selected. Please go back and choose a region.</p>
+    <% } %>
+    <% if (recipes.length === 0) { %>
+      <p>No recipes found for the selected region.</p>
+    <% } else { %>
+      <ul>
+        <% recipes.forEach(recipe => { %>
+          <li>
+            <a href="/recipes/<%= recipe._id %>"><%= recipe.title %></a>
+            by <%= recipe.author.username %>
+          </li>
+        <% }) %>
+      </ul>
+    <% } %>
+    <a href="/" class="btn">Back to Home</a>
+  </main>
+</body>
+</html>

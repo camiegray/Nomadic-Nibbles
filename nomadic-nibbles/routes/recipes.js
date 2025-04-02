@@ -11,5 +11,6 @@ router.get("/recipes/:id", recipesController.show);
 router.post("/recipes", isSignedIn, recipesController.create);
 router.put("/recipes/:id", isSignedIn, recipesController.update);
 router.delete("/recipes/:id", isSignedIn, recipesController.remove);
+router.get("/recipes/searchByRegion", recipesController.searchByRegion);
 
 export default router;

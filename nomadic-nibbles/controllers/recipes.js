@@ -98,3 +98,20 @@ export const remove = async (req, res) => {
     res.status(500).send("Server Error");
   }
 };
+export const searchByRegion = async (req, res) => {
+  try {
+    const { major, sub } = req.query;
+    let query = {};
+    if (major && major.trim() !== "") {
+      query["region.major"] = major;
+    }
+    if (sub && sub.trim() !== "") {
+      query["region.sub"] = sub;
+    }
+    const recipes = await Recipe.find(query).populate("author");
+    res.render("recipes/searchByRegion", { recipes, major, sub });
+  } catch (err) {
+    console.error("Error searching by region:", err);
+    res.status(500).send("Server Error");
+  }
+};

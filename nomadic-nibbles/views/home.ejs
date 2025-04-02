@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="/css/style.css">
   <style>
     body {
-      background-image: url('/assets/images/home.png');
+      background-image: url('/assets/images/index.png');
       background-attachment: fixed;
       background-size: cover;
       background-position: center;
@@ -20,9 +20,57 @@
     <div class="hero-overlay">
       <h1>Savor the Flavors of the World</h1>
       <p>Discover and share global recipes with a cultural twist.</p>
-      <a href="/recipes" class="btn explore">Explore Recipes</a>
-      <a href="/recipes/search" class="btn search">Recipe Search</a>
+      <a href="/recipes" class="btn explore">View All Recipes</a>
+      <!-- Region Search Form -->
+      <div style="margin-top: 20px;">
+        <h2>Search Recipes by Region</h2>
+        <form action="/recipes/searchByRegion" method="GET">
+          <label for="major">Main Region:</label>
+          <select name="major" id="major" required>
+            <option value="">--Select--</option>
+            <option value="Asia">Asia</option>
+            <option value="Europe">Europe</option>
+            <option value="Africa">Africa</option>
+            <option value="Americas">Americas</option>
+            <option value="Oceania">Oceania</option>
+          </select>
+          <br>
+          <label for="sub">Subregion (optional):</label>
+          <select name="sub" id="sub">
+            <option value="">--Select--</option>
+          </select>
+          <br>
+          <button type="submit">Search by Region</button>
+        </form>
+      </div>
     </div>
   </section>
+  <script>
+    // Mapping for subregions for each main region.
+    const regionMapping = {
+      "Asia": ["East Asia", "South Asia", "Southeast Asia", "Central Asia", "Western Asia"],
+      "Europe": ["Northern Europe", "Southern Europe", "Eastern Europe", "Western Europe"],
+      "Africa": ["North Africa", "Sub-Saharan Africa"],
+      "Americas": ["North America", "South America", "Central America", "Caribbean"],
+      "Oceania": ["Australia & New Zealand", "Melanesia", "Micronesia", "Polynesia"]
+    };
+
+    const majorSelect = document.getElementById("major");
+    const subSelect = document.getElementById("sub");
+
+    majorSelect.addEventListener("change", function() {
+      const selectedMajor = this.value;
+      // Clear previous options
+      subSelect.innerHTML = '<option value="">--Select--</option>';
+      if (selectedMajor && regionMapping[selectedMajor]) {
+        regionMapping[selectedMajor].forEach(sub => {
+          const option = document.createElement("option");
+          option.value = sub;
+          option.textContent = sub;
+          subSelect.appendChild(option);
+        });
+      }
+    });
+  </script>
 </body>
 </html>
