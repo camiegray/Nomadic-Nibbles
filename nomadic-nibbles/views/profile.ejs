@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title><%= profileUser.username %>'s Profile</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <style>
+    body {
+      background-image: url('/assets/images/profile.png');
+      background-attachment: fixed;
+      background-size: cover;
+      background-position: center;
+    }
+  </style>
+</head>
+<body>
+  <%- include('partials/nav') %>
+  <main>
+    <h1><%= profileUser.username %>'s Profile</h1>
+    <p>Region: <%= profileUser.region.major %> - <%= profileUser.region.sub %></p>
+    <h2>Recipes</h2>
+    <% if (recipes.length === 0) { %>
+      <p>No recipes found.</p>
+    <% } else { %>
+      <ul>
+        <% recipes.forEach(recipe => { %>
+          <li>
+            <a href="/recipes/<%= recipe._id %>"><%= recipe.title %></a>
+            <% if (user && user._id.toString() === profileUser._id.toString()) { %>
+              <!-- Only logged-in user viewing their own profile sees edit/delete options -->
+              (<a href="/recipes/<%= recipe._id %>/edit">Edit</a>)
+            <% } %>
+          </li>
+        <% }); %>
+      </ul>
+    <% } %>
+    <% if (user && user._id.toString() === profileUser._id.toString()) { %>
+      <a href="/recipes/new" class="btn">Add New Recipe</a>
+    <% } %>
+    <br>
+    <a href="/" class="btn">Back to Home</a>
+  </main>
+</body>
+</html>

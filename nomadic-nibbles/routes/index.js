@@ -1,14 +1,13 @@
 import { Router } from "express";
 import userRoutes from "./users.js";
-import recipesRouter from "./recipes.js";
+import recipesRoutes from "./recipes.js";
 
 const router = Router();
 
 router.get("/", (req, res) => {
   res.render("home");
 });
-
-router.use("/auth", userRoutes);
-router.use(recipesRouter);
+router.use("/", userRoutes);
+router.use("/", recipesRoutes);
 
 export default router;

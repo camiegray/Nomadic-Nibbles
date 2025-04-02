@@ -4,6 +4,14 @@
   <meta charset="UTF-8">
   <title>Recipes by Region</title>
   <link rel="stylesheet" href="/css/style.css">
+  <style>
+    body {
+      background-image: url('/assets/images/search.png');
+      background-attachment: fixed;
+      background-size: cover;
+      background-position: center;
+    }
+  </style>
 </head>
 <body>
   <%- include('../partials/nav') %>
@@ -23,9 +31,10 @@
         <% recipes.forEach(recipe => { %>
           <li>
             <a href="/recipes/<%= recipe._id %>"><%= recipe.title %></a>
-            by <%= recipe.author.username %>
+            <br>
+            by <a href="/profile/<%= recipe.author._id %>"><%= recipe.author.username %></a>
           </li>
-        <% }) %>
+        <% }); %>
       </ul>
     <% } %>
     <a href="/" class="btn">Back to Home</a>

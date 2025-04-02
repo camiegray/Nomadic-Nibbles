@@ -18,19 +18,17 @@
   <main>
     <h1>All Recipes</h1>
     <% if (recipes.length === 0) { %>
-      <p>No recipes found. <% if(user) { %> <a href="/recipes/new">Create one?</a> <% } %></p>
+      <p>No recipes found.</p>
     <% } else { %>
       <ul>
         <% recipes.forEach(recipe => { %>
           <li>
-            <a href="/recipes/<%= recipe._id %>"><%= recipe.title %></a> by <%= recipe.author.username %> 
-            (Region: <%= recipe.region.major %> - <%= recipe.region.sub %>)
+            <a href="/recipes/<%= recipe._id %>"><%= recipe.title %></a>
+            <br>
+            by <a href="/profile/<%= recipe.author._id %>"><%= recipe.author.username %></a>
           </li>
-        <% }) %>
+        <% }); %>
       </ul>
-    <% } %>
-    <% if (user) { %>
-      <a href="/recipes/new" class="btn">Create New Recipe</a>
     <% } %>
   </main>
 </body>

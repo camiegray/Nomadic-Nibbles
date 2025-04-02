@@ -6,7 +6,7 @@
   <link rel="stylesheet" href="/css/style.css">
   <style>
     body {
-      background: url('/assets/images/signin.png');
+      background-image: url('/assets/images/signin.png');
       background-attachment: fixed;
       background-size: cover;
       background-position: center;
@@ -17,18 +17,15 @@
   <%- include('../partials/nav') %>
   <main>
     <h1>Sign In</h1>
-    <form action="/auth/sign-in" method="POST">
-      <div>
-        <label for="username">Username:</label>
-        <input type="text" name="username" id="username" required>
-      </div>
-      <div>
-        <label for="password">Password:</label>
-        <input type="password" name="password" id="password" required>
-      </div>
+    <form action="/sign-in" method="POST">
+      <label for="username">Username:</label>
+      <input type="text" name="username" id="username" required>
+      <br>
+      <label for="password">Password:</label>
+      <input type="password" name="password" id="password" required>
+      <br>
       <button type="submit">Sign In</button>
     </form>
-    <p>Don't have an account? <a href="/auth/sign-up">Sign Up</a></p>
   </main>
 </body>
 </html>
