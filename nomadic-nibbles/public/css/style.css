@@ -3,6 +3,7 @@
   padding: 0;
   box-sizing: border-box;
 }
+
 body {
   font-family: Helvetica, Arial, sans-serif;
   line-height: 1.6;
@@ -12,25 +13,45 @@ body {
   background-position: center;
   padding-top: 80px;
 }
+
 /* Unique Background Classes */
-.bg-home { background-image: url('/assets/images/home.png'); }
-.bg-signin { background-image: url('/assets/images/signin.png'); }
-.bg-signup { background-image: url('/assets/images/signup.png'); }
-.bg-index { background-image: url('/assets/images/index.png'); }
-.bg-show { background-image: url('/assets/images/show.png'); }
-.bg-new { background-image: url('/assets/images/new.png'); }
-.bg-edit { background-image: url('/assets/images/edit.png'); }
-.bg-profile { background-image: url('/assets/images/profile.png'); }
-.bg-search { background-image: url('/assets/images/search.png'); }
+.bg-home {
+  background-image: url('/assets/images/home.png');
+}
+.bg-signin {
+  background-image: url('/assets/images/signin.png');
+}
+.bg-signup {
+  background-image: url('/assets/images/signup.png');
+}
+.bg-index {
+  background-image: url('/assets/images/index.png');
+}
+.bg-show {
+  background-image: url('/assets/images/show.png');
+}
+.bg-new {
+  background-image: url('/assets/images/new.png');
+}
+.bg-edit {
+  background-image: url('/assets/images/edit.png');
+}
+.bg-profile {
+  background-image: url('/assets/images/profile.png');
+}
+.bg-search {
+  background-image: url('/assets/images/search.png');
+}
 
 /* Navbar */
 .navbar {
+  background: rgba(51, 51, 51, 0.8);
+  color: #fff;
+  padding: 10px 20px;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  background: rgba(0, 0, 0, 0.7);
-  padding: 10px 20px;
   z-index: 1000;
 }
 .navbar .container {
@@ -54,17 +75,21 @@ body {
   padding: 5px 10px;
   border-radius: 4px;
 }
-.nav-links a.login { background-color: #F4A261; }
-.nav-links a.signup { background-color: #2A9D8F; }
+.nav-links a.login {
+  background-color: #F4A261;
+}
+.nav-links a.signup {
+  background-color: #2A9D8F;
+}
 
 /* General Container */
 .container {
   max-width: 800px;
   margin: 40px auto;
   padding: 20px;
-  background: rgba(0,0,0,0.75);
+  background: rgba(0, 0, 0, 0.75);
   border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.5);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
 }
 
 /* Form Container */
@@ -139,13 +164,13 @@ body {
   font-size: 48px;
   margin-bottom: 10px;
   color: #fff;
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
 }
 .hero p {
   font-size: 20px;
   margin-bottom: 20px;
   color: #fff;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
 }
 .btn {
   display: inline-block;
@@ -156,10 +181,16 @@ body {
   border-radius: 4px;
   transition: background 0.3s ease;
 }
-.btn.explore { background-color: #F4A261; color: #fff; }
-.btn.search { background-color: #2A9D8F; color: #fff; }
+.btn.explore {
+  background-color: #F4A261;
+  color: #fff;
+}
+.btn.search {
+  background-color: #2A9D8F;
+  color: #fff;
+}
 
-/* Recipe Grid on Index Page */
+/* Recipe Grid (Index Page) */
 .recipe-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -182,7 +213,13 @@ body {
 
 /* Responsive */
 @media (max-width: 768px) {
-  .hero h1 { font-size: 36px; }
-  .hero p { font-size: 18px; }
-  .nav-links a { font-size: 14px; }
+  .hero h1 {
+    font-size: 36px;
+  }
+  .hero p {
+    font-size: 18px;
+  }
+  .nav-links a {
+    font-size: 14px;
+  }
 }

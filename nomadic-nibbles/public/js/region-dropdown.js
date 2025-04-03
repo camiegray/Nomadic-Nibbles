@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener("DOMContentLoaded", function() {
   var regionMapping = {
     "Asia": ["East Asia", "South Asia", "Southeast Asia", "Central Asia", "Western Asia"],
     "Europe": ["Northern Europe", "Southern Europe", "Eastern Europe", "Western Europe"],
@@ -6,35 +6,36 @@ document.addEventListener('DOMContentLoaded', function() {
     "Americas": ["North America", "South America", "Central America", "Caribbean"],
     "Oceania": ["Australia & New Zealand", "Melanesia", "Micronesia", "Polynesia"]
   };
-  document.querySelectorAll('.region-dropdown').forEach(function(select) {
-    var placeholder = select.getAttribute('data-placeholder');
-    if (placeholder) {
-      var opt = document.createElement('option');
-      opt.value = "";
-      opt.textContent = placeholder;
-      opt.disabled = true;
-      opt.selected = true;
-      select.appendChild(opt);
+
+  document.querySelectorAll("select[data-dependent]").forEach(function(select) {
+    var dependentSelector = select.getAttribute("data-dependent");
+    var dependent = document.querySelector(dependentSelector);
+    if (select.options.length === 0) {
+      var defaultOption = document.createElement("option");
+      defaultOption.value = "";
+      defaultOption.textContent = "--Select--";
+      select.appendChild(defaultOption);
+      Object.keys(regionMapping).forEach(function(key) {
+        var option = document.createElement("option");
+        option.value = key;
+        option.textContent = key;
+        select.appendChild(option);
+      });
     }
-    Object.keys(regionMapping).forEach(function(key) {
-      var opt = document.createElement('option');
-      opt.value = key;
-      opt.textContent = key;
-      select.appendChild(opt);
-    });
     select.addEventListener("change", function() {
-      var dependent = document.querySelector(select.getAttribute('data-dependent'));
       if (dependent) {
-        dependent.innerHTML = '<option value="">--Select--</option>';
-        var subs = regionMapping[this.value];
-        if (subs) {
-          subs.forEach(function(sub) {
-            var opt = document.createElement("option");
-            opt.value = sub;
-            opt.textContent = sub;
-            dependent.appendChild(opt);
-          });
-        }
+        dependent.innerHTML = "";
+        var defOpt = document.createElement("option");
+        defOpt.value = "";
+        defOpt.textContent = "--Select--";
+        dependent.appendChild(defOpt);
+        var subs = regionMapping[this.value] || [];
+        subs.forEach(function(sub) {
+          var opt = document.createElement("option");
+          opt.value = sub;
+          opt.textContent = sub;
+          dependent.appendChild(opt);
+        });
       }
     });
   });
