@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title><%= recipe.title %></title>
+  <title><%= recipe.title %> - Nomadic Nibbles</title>
   <link rel="stylesheet" href="/css/style.css">
   <style>
     body {
@@ -13,22 +13,23 @@
     }
   </style>
 </head>
-<body>
+<body class="bg-show">
   <%- include('../partials/nav') %>
-  <main>
+  <main class="container">
     <h1><%= recipe.title %></h1>
     <p><strong>Ingredients:</strong></p>
     <ul>
-      <% recipe.ingredients.forEach(ingredient => { %>
+      <% recipe.ingredients.forEach(function(ingredient) { %>
         <li><%= ingredient %></li>
-      <% }) %>
+      <% }); %>
     </ul>
-    <p><strong>Instructions:</strong> <%= recipe.instructions %></p>
+    <p><strong>Instructions:</strong></p>
+    <pre><%= recipe.instructions.join("\n") %></pre>
     <p><strong>Region:</strong> <%= recipe.region.major %> - <%= recipe.region.sub %></p>
-    <p><strong>Created by:</strong> <%= recipe.author.username %></p>
+    <p><strong>Created by:</strong> <a href="/profile/<%= recipe.author._id %>"><%= recipe.author.username %></a></p>
     <% if (user && user._id.toString() === recipe.author._id.toString()) { %>
       <a href="/recipes/<%= recipe._id %>/edit" class="btn">Edit Recipe</a>
-      <form action="/recipes/<%= recipe._id %>?_method=DELETE" method="POST" style="display:inline;">
+      <form action="/recipes/<%= recipe._id %>?_method=DELETE" method="POST" class="inline-form">
         <button type="submit" class="btn">Delete Recipe</button>
       </form>
     <% } %>

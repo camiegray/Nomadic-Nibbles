@@ -3,13 +3,14 @@
     <a href="/" class="logo">Nomadic Nibbles</a>
     <nav class="nav-links">
       <a href="/">Home</a>
-      <a href="/recipes">Recipes</a>
-      <% if (!user) { %>
-        <a href="/sign-in" class="btn login">Login</a>
-        <a href="/sign-up" class="btn signup">Sign Up</a>
+      <a href="/recipes">All Recipes</a>
+      <% if (user) { %>
+        <a href="/recipes/new" class="btn">New Recipe</a>
+        <a href="/profile" class="btn">Profile</a>
+        <a href="/sign-out" class="btn">Sign Out</a>
       <% } else { %>
-        <a href="/profile" class="btn">My Profile</a>
-        <a href="/sign-out" class="btn logout">Sign Out</a>
+        <a href="/sign-in" class="btn login">Sign In</a>
+        <a href="/sign-up" class="btn signup">Sign Up</a>
       <% } %>
     </nav>
   </div>

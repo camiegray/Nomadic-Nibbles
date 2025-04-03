@@ -2,54 +2,29 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Sign Up</title>
+  <title>Sign Up - Nomadic Nibbles</title>
   <link rel="stylesheet" href="/css/style.css">
-  <style>
-    body {
-      background-image: url('/assets/images/signup.png');
-      background-attachment: fixed;
-      background-size: cover;
-      background-position: center;
-    }
-  </style>
 </head>
-<body>
+<body class="bg-signup">
   <%- include('../partials/nav') %>
-  <main>
+  <main class="container">
     <h1>Sign Up</h1>
-    <form action="/auth/sign-up" method="POST">
-      <div>
-        <label for="username">Username:</label>
-        <input type="text" name="username" id="username" required>
-      </div>
-      <div>
-        <label for="password">Password:</label>
-        <input type="password" name="password" id="password" required>
-      </div>
-      <div>
-        <label for="confirmPassword">Confirm Password:</label>
-        <input type="password" name="confirmPassword" id="confirmPassword" required>
-      </div>
-      <div>
-        <label for="majorRegion">Major Region:</label>
-        <select id="majorRegion" name="majorRegion" required>
-          <option value="">Select a major region</option>
-          <option value="Asia">Asia</option>
-          <option value="Europe">Europe</option>
-          <option value="Africa">Africa</option>
-          <option value="Americas">Americas</option>
-          <option value="Oceania">Oceania</option>
-        </select>
-      </div>
-      <div>
-        <label for="subRegion">Subregion:</label>
-        <select id="subRegion" name="subRegion" required>
-          <option value="">Select a subregion</option>
-        </select>
-      </div>
-      <button type="submit">Sign Up</button>
+    <form action="/sign-up" method="POST">
+      <label for="username">Username:</label>
+      <input type="text" name="username" id="username" required>
+      <label for="password">Password:</label>
+      <input type="password" name="password" id="password" required>
+      <label for="confirmPassword">Confirm Password:</label>
+      <input type="password" name="confirmPassword" id="confirmPassword" required>
+      <label for="majorRegion">Main Region:</label>
+      <select name="majorRegion" id="majorRegion" data-dependent="#subRegion" required></select>
+      <label for="subRegion">Subregion:</label>
+      <select name="subRegion" id="subRegion" required>
+        <option value="">--Select--</option>
+      </select>
+      <button type="submit" class="btn">Sign Up</button>
     </form>
-    <p>Already have an account? <a href="/auth/sign-in">Sign In</a></p>
+    <p>Already have an account? <a href="/sign-in">Sign In</a></p>
   </main>
   <script src="/js/region-dropdown.js"></script>
 </body>

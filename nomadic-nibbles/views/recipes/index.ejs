@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>All Recipes</title>
+  <title>All Recipes - Nomadic Nibbles</title>
   <link rel="stylesheet" href="/css/style.css">
   <style>
     body {
@@ -13,23 +13,22 @@
     }
   </style>
 </head>
-<body>
+<body class="bg-index">
   <%- include('../partials/nav') %>
-  <main>
+  <main class="container">
     <h1>All Recipes</h1>
-    <% if (recipes.length === 0) { %>
-      <p>No recipes found.</p>
-    <% } else { %>
-      <ul>
-        <% recipes.forEach(recipe => { %>
-          <li>
-            <a href="/recipes/<%= recipe._id %>"><%= recipe.title %></a>
-            <br>
-            by <a href="/profile/<%= recipe.author._id %>"><%= recipe.author.username %></a>
-          </li>
+    <div class="recipe-grid">
+      <% if (recipes.length === 0) { %>
+        <p>No recipes found.</p>
+      <% } else { %>
+        <% recipes.forEach(function(recipe) { %>
+          <div class="recipe-item">
+            <h3><a href="/recipes/<%= recipe._id %>"><%= recipe.title %></a></h3>
+            <p>by <a href="/profile/<%= recipe.author._id %>"><%= recipe.author.username %></a></p>
+          </div>
         <% }); %>
-      </ul>
-    <% } %>
+      <% } %>
+    </div>
   </main>
 </body>
 </html>
