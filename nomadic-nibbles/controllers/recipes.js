@@ -41,6 +41,7 @@ export const editForm = async (req, res) => {
 export const create = async (req, res) => {
   try {
     const { title, description, prepTime, cookTime, totalTime, servings, ingredients, instructions } = req.body;
+    const regionSub = req.body.subRegion && req.body.subRegion.trim() !== "" ? req.body.subRegion : "N/A";
     const recipe = new Recipe({
       title,
       description,
@@ -51,7 +52,7 @@ export const create = async (req, res) => {
       ingredients,
       instructions,
       author: req.session.user._id,
-      region: { major: req.body.majorRegion, sub: req.body.subRegion }
+      region: { major: req.body.majorRegion, sub: regionSub }
     });
     await recipe.save();
     res.redirect(`/recipes/${recipe._id}`);
@@ -76,7 +77,8 @@ export const update = async (req, res) => {
     recipe.servings = servings;
     recipe.ingredients = ingredients;
     recipe.instructions = instructions;
-    recipe.region = { major: req.body.majorRegion, sub: req.body.subRegion };
+    const regionSub = req.body.subRegion && req.body.subRegion.trim() !== "" ? req.body.subRegion : "N/A";
+    recipe.region = { major: req.body.majorRegion, sub: regionSub };
     await recipe.save();
     res.redirect(`/recipes/${recipe._id}`);
   } catch (err) {
@@ -90,14 +92,15 @@ export const remove = async (req, res) => {
     const recipe = await Recipe.findById(req.params.id);
     if (!recipe) return res.status(404).send("Recipe not found");
     if (!recipe.author.equals(req.session.user._id))
-      return res.status(403).send("Not authorized to delete this recipe");
-    await recipe.remove();
+      return res.status(403).send("Not authorized");
+    await recipe.deleteOne();
     res.redirect("/profile");
   } catch (err) {
     console.error(err);
     res.status(500).send("Server Error");
   }
 };
+
 
 export const searchByRegion = async (req, res) => {
   try {

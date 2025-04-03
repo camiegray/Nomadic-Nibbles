@@ -22,8 +22,8 @@
       background: rgba(0, 0, 0, 0.6);
       padding: 40px;
       border-radius: 8px;
-      width: 100%;
       max-width: 600px;
+      width: 100%;
       display: grid;
       gap: 15px;
       color: #fff;
@@ -103,11 +103,35 @@
       </select>
       <label for="subRegion">Subregion</label>
       <select name="subRegion" id="subRegion">
-        <option value="">Select a subregion</option>
+        <option value="">--Select--</option>
       </select>
       <button type="submit">Create Recipe</button>
     </form>
   </main>
-  <script src="/js/region-dropdown.js"></script>
+  <script>
+    const regionMapping = {
+      "Asia": ["East Asia", "South Asia", "Southeast Asia", "Central Asia", "Western Asia"],
+      "Europe": ["Northern Europe", "Southern Europe", "Eastern Europe", "Western Europe"],
+      "Africa": ["North Africa", "Sub-Saharan Africa"],
+      "Americas": ["North America", "South America", "Central America", "Caribbean"],
+      "Oceania": ["Australia & New Zealand", "Melanesia", "Micronesia", "Polynesia"]
+    };
+    const majorSelect = document.getElementById("majorRegion");
+    const subSelect = document.getElementById("subRegion");
+    function populateSubregions(selectedMajor) {
+      subSelect.innerHTML = '<option value="">--Select--</option>';
+      if (selectedMajor && regionMapping[selectedMajor]) {
+        regionMapping[selectedMajor].forEach(sub => {
+          const option = document.createElement("option");
+          option.value = sub;
+          option.textContent = sub;
+          subSelect.appendChild(option);
+        });
+      }
+    }
+    majorSelect.addEventListener("change", function() {
+      populateSubregions(this.value);
+    });
+  </script>
 </body>
 </html>
