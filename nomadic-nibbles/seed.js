@@ -1191,7 +1191,7 @@ const seedData = async () => {
       };
 
       const homeRecipeObj = {
-        title: `${user.username}'s Traditional Dish: ${homeDishName}`,
+        title: `${homeDishName}`,
         description: homeRecipe.description,
         prepTime: homeRecipe.prepTime,
         cookTime: homeRecipe.cookTime,
@@ -1222,7 +1222,7 @@ const seedData = async () => {
       };
 
       const secondRecipeObj = {
-        title: `${secondDishName} (${second.continent})`,
+        title: `${secondDishName}`,
         description: secondRecipe.description,
         prepTime: secondRecipe.prepTime,
         cookTime: secondRecipe.cookTime,

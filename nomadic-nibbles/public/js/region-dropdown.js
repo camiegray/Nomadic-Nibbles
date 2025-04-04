@@ -1,8 +1,8 @@
 document.addEventListener("DOMContentLoaded", function() {
   var regionMapping = {
-    "Asia": ["East Asia", "South Asia", "Southeast Asia", "Central Asia", "Western Asia"],
+    "Asia": ["East Asia", "South Asia", "Southeast Asia", "Middle East", "Central Asia", "Western Asia"],
     "Europe": ["Northern Europe", "Southern Europe", "Eastern Europe", "Western Europe"],
-    "Africa": ["North Africa", "Sub-Saharan Africa"],
+    "Africa": ["North Africa", "Sub-Saharan Africa", "West Africa", "East AFrica"],
     "Americas": ["North America", "South America", "Central America", "Caribbean"],
     "Oceania": ["Australia & New Zealand", "Melanesia", "Micronesia", "Polynesia"]
   };
