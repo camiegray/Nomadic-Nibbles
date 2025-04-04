@@ -14,7 +14,7 @@ body {
   background-position: center;
   padding-top: 80px;
 }
-}
+
 .bg-home { background-image: url('/assets/images/home.png'); }
 .bg-signin { background-image: url('/assets/images/signin.png'); }
 .bg-signup { background-image: url('/assets/images/signup.png'); }
