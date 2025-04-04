@@ -6,7 +6,6 @@ document.addEventListener("DOMContentLoaded", function() {
     "Americas": ["North America", "South America", "Central America", "Caribbean"],
     "Oceania": ["Australia & New Zealand", "Melanesia", "Micronesia", "Polynesia"]
   };
-
   document.querySelectorAll("select[data-dependent]").forEach(function(select) {
     var dependentSelector = select.getAttribute("data-dependent");
     var dependent = document.querySelector(dependentSelector);

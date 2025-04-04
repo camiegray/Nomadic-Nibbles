@@ -18,8 +18,7 @@
   <main class="container">
     <h1>Recipes by Region</h1>
     <% if (major) { %>
-      <p>Showing recipes from <strong><%= major %></strong>
-        <% if (sub && sub.trim() !== "") { %> - <strong><%= sub %></strong><% } %>.</p>
+      <p>Showing recipes from <strong><%= major %></strong><% if (sub && sub.trim() !== "") { %> - <strong><%= sub %></strong><% } %>.</p>
     <% } else { %>
       <p>No region selected. Please go back and choose a region.</p>
     <% } %>
@@ -30,7 +29,7 @@
         <% recipes.forEach(function(recipe) { %>
           <div class="recipe-item">
             <h3><a href="/recipes/<%= recipe._id %>"><%= recipe.title %></a></h3>
-            <p>by <a href="/profile/<%= recipe.author._id %>"><%= recipe.author.username %></a></p>
+            <p class="author">by <a href="/profile/<%= recipe.author._id %>"><%= recipe.author.username %></a></p>
           </div>
         <% }); %>
       <% } %>
