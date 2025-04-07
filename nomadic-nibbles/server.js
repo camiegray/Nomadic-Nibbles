@@ -19,7 +19,6 @@ app.set("view engine", "ejs");
 app.use(
   session({
     secret: process.env.SESSION_SECRET || 'reallylongkey',
-
     resave: false,
     saveUninitialized: true,
     store: MongoStore.create({ mongoUrl: process.env.MONGODB_URI }),
@@ -31,11 +30,27 @@ app.use("/assets", express.static("assets"));
 
 app.use("/", router);
 
-db.on("connected", () => {
-  console.clear();
-  console.log(chalk.blue(`Connected to MongoDB ${db.name}.`));
+function onDbConnected() {
+  try {
+    console.clear();
+    console.log(chalk.blue(`Connected to MongoDB ${db.name}.`));
+  } catch (error) {
+    console.error(chalk.red("Error during DB connected event:"), error);
+  }
+}
 
-app.listen(PORT, '::', () => {
-    console.log(chalk.green(`The express app is ready on port ${PORT}!`));
-  });
+function startServer() {
+  try {
+    app.listen(PORT, '::', () => {
+      console.log(chalk.green(`The express app is ready on port ${PORT}!`));
+    });
+  } catch (error) {
+    console.error(chalk.red("Error starting server:"), error);
+    process.exit(1);
+  }
+}
+
+db.on("connected", () => {
+  onDbConnected();
+  startServer();
 });
