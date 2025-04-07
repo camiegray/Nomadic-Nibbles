@@ -4,36 +4,48 @@
   <meta charset="UTF-8">
   <title><%= recipe.title %> - Nomadic Nibbles</title>
   <link rel="stylesheet" href="/css/style.css">
-  <style>
-    body {
-      background-image: url('/assets/images/show.png');
-      background-attachment: fixed;
-      background-size: cover;
-      background-position: center;
-    }
-  </style>
 </head>
-<body class="bg-show">
+<body class="cookbook">
   <%- include('../partials/nav') %>
-  <main class="container">
-    <h1><%= recipe.title %></h1>
-    <p><strong>Ingredients:</strong></p>
-    <ul>
-      <% recipe.ingredients.forEach(function(ingredient) { %>
-        <li><%= ingredient %></li>
-      <% }); %>
-    </ul>
-    <p><strong>Instructions:</strong></p>
-    <pre><%= recipe.instructions.join("\n") %></pre>
-    <p><strong>Region:</strong> <%= recipe.region.major %> - <%= recipe.region.sub %></p>
-    <p><strong>Created by:</strong> <a href="/profile/<%= recipe.author._id %>"><%= recipe.author.username %></a></p>
+  <main class="container cookbook-show">
+    <header class="recipe-header">
+      <h1 class="recipe-title"><%= recipe.title %></h1>
+      <p class="recipe-author">
+        by <a href="/profile/<%= recipe.author._id %>"><%= recipe.author.username %></a>
+      </p>
+    </header>
+    <section class="recipe-section">
+      <h2 class="section-title">Ingredients</h2>
+      <ul class="ingredients-list">
+        <% recipe.ingredients.forEach(function(ingredient) { %>
+          <li><%= ingredient %></li>
+        <% }); %>
+      </ul>
+    </section>
+    <section class="recipe-section">
+      <h2 class="section-title">Instructions</h2>
+      <div class="instructions">
+        <% recipe.instructions.forEach(function(step, index) { %>
+          <p><strong>Step <%= index + 1 %>:</strong> <%= step %></p>
+        <% }); %>
+      </div>
+    </section>
+    <section class="recipe-section">
+      <h2 class="section-title">Region</h2>
+      <p class="recipe-region"><%= recipe.region.major %> - <%= recipe.region.sub %></p>
+    </section>
     <% if (user && user._id.toString() === recipe.author._id.toString()) { %>
-      <a href="/recipes/<%= recipe._id %>/edit" class="btn">Edit Recipe</a>
-      <form action="/recipes/<%= recipe._id %>?_method=DELETE" method="POST" class="inline-form">
-        <button type="submit" class="btn">Delete Recipe</button>
-      </form>
+      <div class="recipe-actions">
+        <a href="/recipes/<%= recipe._id %>/edit" class="btn edit-btn">Edit Recipe</a>
+        <form action="/recipes/<%= recipe._id %>?_method=DELETE" method="POST" class="inline-form">
+          <button type="submit" class="btn delete-btn">Delete Recipe</button>
+        </form>
+      </div>
     <% } %>
-    <a href="/recipes" class="btn">Back to Recipes</a>
+    <div class="back-link">
+      <a href="/recipes" class="btn back-btn">Back to Recipes</a>
+    </div>
   </main>
 </body>
 </html>
+
