@@ -30,10 +30,26 @@ app.use("/assets", express.static("assets"));
 
 app.use("/", router);
 
-db.on("connected", () => {
-  console.clear();
-  console.log(chalk.blue(`Connected to MongoDB ${db.name}.`));
+function onDbConnected(db) {
+  try {
+    console.clear();
+    console.log(chalk.blue(`Connected to MongoDB ${db.name}.`));
+  } catch (error) {
+    console.error(chalk.red(`Error logging MongoDB connection: ${error.message}`));
+  }
+}
 
-app.listen(port, () => {
-    console.log(`App listening on port: ${port}`);
-  });
+function startServer() {
+  try {
+    app.listen(PORT, () => {
+      console.log(chalk.green(`The express app is ready on port ${PORT}!`));
+    });
+  } catch (error) {
+    console.error(chalk.red(`Error starting server: ${error.message}`));
+  }
+}
+
+db.on("connected", () => {
+  onDbConnected(db);
+  startServer();
+});
