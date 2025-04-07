@@ -1,84 +1,57 @@
 # 🌍 Nomadic Nibbles
 
-![Nomadic Nibbles Landing](assets/Images/shot.png)
+## Overview 📖
 
----
+Nomadic Nibbles is a full-stack, global recipe-sharing platform that brings together food enthusiasts from every corner of the world 🌎. This dynamic application pairs a Node.js/Express web service with a native Android client to deliver a seamless culinary experience 🍽️. With intuitive RESTful routes and a visually engaging interface 🎨, users can easily explore, create, edit, and manage recipes inspired by diverse cultural traditions 🌐.
 
-## 📖 Table of Contents
+## Features ✨
 
-1. Project Overview  
-2. MVP  
-3. ERD  
-4. Routes and Controllers  
-5. Timeline
+- **User Authentication & Authorization 🔒:** Secure, session-based login and registration for personalized experiences.
+- **Comprehensive Recipe Management 📝:** Create, view, update, and delete recipes with detailed ingredients and step-by-step instructions.
+- **Regional Personalization 🗺️:** Discover recipes tied to specific cultural and geographic regions.
+- **Responsive UI 📱:** Enjoy a fluid, accessible interface built with CSS Flexbox and Grid.
+- **Integrated Mobile Experience 📲:** Engage with your favorite recipes on the go using the dedicated native Android app.
+- **Image Service Integration 🖼️:** Plans to incorporate a dedicated image service to efficiently host and serve recipe images.
 
----
+## Architecture 💻
 
-## 🌟 Project Overview
+### Web Application
+- **Backend ⚙️:** Powered by Node.js and Express, offering robust RESTful API endpoints for managing users and recipes.
+- **Frontend 🎨:** EJS templates dynamically render responsive HTML views.
+- **Static Assets 📁:** All images, stylesheets, and scripts are served from a public directory for seamless performance.
 
-**Nomadic Nibbles** is a vibrant, full-stack recipe-sharing platform designed to unite food lovers across the globe. This project provides an international space for culinary storytelling using relational data models for Users, Recipes, and Regions. The application leverages RESTful routing to offer a seamless experience for creating, managing, and exploring a rich tapestry of global recipes.
+## Tech Stack 🛠️
 
----
+- **Server 🚀:** Node.js, Express
+- **Templating 🖥️:** EJS
+- **Styling 🎨:** CSS (Flexbox & Grid)
+- **Database 🗄️:** MongoDB (hosted on MongoDB Atlas ☁️)
+- **Image Service 🖼️:** Planned integration for optimized image hosting and delivery
+- **Version Control 🐙:** Git
 
-## 🚀 MVP
+## API and Routes 🚦
 
-1. **User Authentication & Authorization**  
-   Secure session-based login and registration ensure that only authenticated users can create, edit, or delete recipes.
+| HTTP Method | Route                 | Description                                 |
+| ----------- | --------------------- | ------------------------------------------- |
+| GET         | `/users/register`     | Display the user registration form          |
+| POST        | `/users/register`     | Handle new user registration                |
+| GET         | `/users/login`        | Display the login form                      |
+| POST        | `/users/login`        | Authenticate the user                       |
+| GET         | `/users/logout`       | Log the user out                            |
+| GET         | `/recipes`            | List all available recipes                  |
+| GET         | `/recipes/new`        | Show the form for creating a new recipe     |
+| POST        | `/recipes`            | Create a new recipe                         |
+| GET         | `/recipes/:id`        | View detailed information for a recipe      |
+| GET         | `/recipes/:id/edit`   | Show the form to edit an existing recipe    |
+| PUT         | `/recipes/:id`        | Update an existing recipe                   |
+| DELETE      | `/recipes/:id`        | Remove a recipe from the platform           |
 
-2. **Recipe Management**  
-   - **Create:** Users can add recipes with fields for title, ingredients, detailed instructions, and cultural region information.
-   - **Read:** A dynamic recipe index displays all recipes, with detailed views for each.
-   - **Update:** Pre-filled forms allow users to edit their own recipes.
-   - **Delete:** Users can remove their recipes to maintain a curated collection.
+## Deployment 🚀
 
-3. **Regional Focus**  
-   - Each user is linked to a specific region, and every recipe is associated with a region, emphasizing cultural origins.
+The web application is deployed on Heroku ☁️ for scalable, cloud-based hosting. Continuous deployment ensures that updates are automatically pushed and available in production.
 
-4. **User Interface**  
-   Designed with CSS Flexbox and Grid, the UI includes accessible navigation with a persistent header and a responsive layout.
+## Credits 🤖
 
----
+This project leverages innovative solutions inspired by AI-generated GPT sources. Contributions and code snippets from various GPT-powered tools have helped shape the development and design of Nomadic Nibbles.
 
-## 📊 Entity Relationship Diagram (ERD)
-
-Below is the ERD for **Nomadic Nibbles**, outlining the relationships between Users, Recipes, and Regions.
-
-![Nomadic Nibbles ERD](assets/Images/erd2.png)
-
----
-
-## 🔀 Routes and Controllers
-
-Nomadic Nibbles adheres to RESTful routing conventions. The following table outlines the main routes and their corresponding controllers:
-
-| Route                  | Controller                | Detail                                             |
-|------------------------|---------------------------|----------------------------------------------------|
-| GET /users/register    | auth.registerForm()       | Renders the registration form                      |
-| POST /users/register   | auth.registerUser()       | Processes new user registration                    |
-| GET /users/login       | auth.loginForm()          | Renders the login form                             |
-| POST /users/login      | auth.loginUser()          | Authenticates user and starts a session            |
-| GET /users/logout      | auth.logoutUser()         | Logs the user out and ends the session             |
-| GET /recipes           | recipes.index()           | Displays all recipes                               |
-| GET /recipes/new       | recipes.renderNewForm()   | Renders form for creating a new recipe             |
-| POST /recipes          | recipes.createRecipe()    | Creates a new recipe                               |
-| GET /recipes/:id       | recipes.showRecipe()      | Shows details of a specific recipe                 |
-| GET /recipes/:id/edit  | recipes.renderEditForm()  | Renders form to edit a recipe                      |
-| PUT /recipes/:id       | recipes.updateRecipe()    | Updates a recipe in the database                   |
-| DELETE /recipes/:id    | recipes.deleteRecipe()    | Removes a recipe from the database                 |
-
----
-
-## Timeline
-
-| Day       |   | Task                           | Blockers               | Notes/ Thoughts                          |
-|-----------|---|--------------------------------|------------------------|------------------------------------------|
-| Monday    |   | Research                       |                        |                                          |
-| Tuesday   |   | Proposal & Routes              |                        | Finalize project proposal                |
-| Wednesday |   | Views                          | Initial design issues  | HTML & EJS views for core pages          |
-| Thursday  |   | Views & Routes                 | Minor debugging        | Express routes                           |
-| Friday    |   | Testing                        |                        | Combine functionalities                  |
-| Saturday  |   | CSS & Styling                  |                        | Flexbox                                  |
-| Sunday    |   | Final review and deploy        |                        |                                          |
-| Monday    |   | Present!                       |                        |                                          |
-
-**Savor the flavors of the world with Nomadic Nibbles!**
+**Savor the flavors of the world with Nomadic Nibbles – where every recipe tells a unique story! 🌟**
