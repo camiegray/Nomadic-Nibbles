@@ -1,5 +1,5 @@
 # 🌍 Nomadic Nibbles
-
+![Nomadic Nibbles Landing](./public/assets/images/pic.png)
 ## Overview 📖
 
 Nomadic Nibbles is a full-stack, global recipe-sharing platform that brings together food enthusiasts from every corner of the world 🌎. This dynamic application pairs a Node.js/Express web service with a native Android client to deliver a seamless culinary experience 🍽️. With intuitive RESTful routes and a visually engaging interface 🎨, users can easily explore, create, edit, and manage recipes inspired by diverse cultural traditions 🌐.
@@ -54,4 +54,6 @@ The web application is deployed on Heroku ☁️ for scalable, cloud-based hosti
 
 This project leverages innovative solutions inspired by AI-generated GPT sources. Contributions and code snippets from various GPT-powered tools have helped shape the development and design of Nomadic Nibbles.
 
-**Savor the flavors of the world with Nomadic Nibbles – where every recipe tells a unique story! 🌟**
+Recipes and user were created by seed file, with original function provided by GA employee and modified using GPT to push 20 different user with 2 different recipes each with one recipe originating from their generate home subregion.
+
+## 🌟Savor the flavors of the world with Nomadic Nibbles🌟Where every recipe tells a unique story!🌟

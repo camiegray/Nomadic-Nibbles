@@ -1,6 +1,6 @@
 # 🌍 Nomadic Nibbles
 
-![Nomadic Nibbles Landing](assets/Images/shot.png)
+![Nomadic Nibbles Landing](./public/assets/images/shot.png)
 
 ---
 
