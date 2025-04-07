@@ -18,7 +18,8 @@ app.use(logger("dev"));
 app.set("view engine", "ejs");
 app.use(
   session({
-    secret: process.env.SESSION_SECRET,
+    secret: process.env.SESSION_SECRET || 'reallylongkey',
+
     resave: false,
     saveUninitialized: true,
     store: MongoStore.create({ mongoUrl: process.env.MONGODB_URI }),
