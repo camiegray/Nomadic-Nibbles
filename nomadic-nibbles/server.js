@@ -33,7 +33,7 @@ app.use("/", router);
 db.on("connected", () => {
   console.clear();
   console.log(chalk.blue(`Connected to MongoDB ${db.name}.`));
-  app.listen(PORT, () => {
-    console.log(chalk.green(`The express app is ready on port ${PORT}!`));
+
+app.listen(port, () => {
+    console.log(`App listening on port: ${port}`);
   });
-});
